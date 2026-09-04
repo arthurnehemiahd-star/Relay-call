@@ -41,4 +41,6 @@ socketServer.on('connection', (socket) => {
   socket.on('close', () => { if (email && users.get(email) === socket) users.delete(email); });
 });
 
-server.listen(4173, () => console.log('Relay server running at http://localhost:4173'));
+server.listen(process.env.PORT || 4173, () => {
+  console.log(`Relay server running on port ${process.env.PORT || 4173}`);
+});
