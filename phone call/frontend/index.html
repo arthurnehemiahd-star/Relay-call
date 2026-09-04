@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>relay — call by email</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="relay home"><span class="brand-mark">r</span><span>relay</span></a>
+      <div class="workspace-pill"><span class="status-dot"></span><span>Personal space</span><span class="chevron">⌄</span></div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-item active" href="#dialer"><span class="nav-icon">⌕</span>Dialer</a>
+        <a class="nav-item" href="#recents"><span class="nav-icon">◷</span>Recents <span class="nav-count">3</span></a>
+        <a class="nav-item" href="#contacts"><span class="nav-icon">♧</span>Contacts</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="tip-card"><span class="tip-icon">✦</span><div><strong>Call by identity</strong><p>No phone number required.</p></div></div>
+        <button class="profile-button" id="profileButton"><span class="avatar avatar-me">JR</span><span class="profile-copy"><strong id="profileName">Jordan Reed</strong><small id="profileEmail">jordan.reed@gmail.com</small></span><span class="more">•••</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dialer">
+      <header class="topbar"><div class="mobile-brand"><span class="brand-mark">r</span> relay</div><div class="call-filters" role="tablist" aria-label="Call history filters"><button class="call-filter selected" data-filter="all" role="tab" aria-selected="true">Recent calls</button><button class="call-filter" data-filter="missed" role="tab" aria-selected="false">Missed calls</button><button class="call-filter" data-filter="received" role="tab" aria-selected="false">Received calls</button><button class="call-filter" data-filter="dialed" role="tab" aria-selected="false">Dialed calls</button></div><div class="topbar-actions"><button class="icon-button" aria-label="Help">?</button><button class="icon-button" aria-label="Settings">⚙</button></div></header>
+      <div class="history-status" id="historyStatus" aria-live="polite">No recent calls yet</div>
+      <section class="history-panel" id="historyPanel" hidden><div class="history-panel-heading"><strong id="historyPanelTitle">Recent calls</strong><button type="button" id="closeHistory" aria-label="Close call history">×</button></div><div id="historyItems"></div></section>
+      <section class="content-grid">
+        <div class="dialer-column phone-dialer">
+          <div class="eyebrow">RELAY DIALER <span></span> CHOOSE A CALLING ID</div>
+          <div class="dial-mode" role="tablist" aria-label="Calling mode"><button class="mode-button" type="button" role="tab" aria-selected="false" data-mode="phone">Phone number</button><button class="mode-button selected" type="button" role="tab" aria-selected="true" data-mode="gmail">Gmail address</button></div>
+          <div class="dial-display"><label for="emailInput">Gmail address</label><div class="email-input-wrap"><span class="input-symbol">@</span><input id="emailInput" type="email" placeholder="name@gmail.com" autocomplete="off" required /><button type="button" class="clear-button" id="clearButton" aria-label="Clear">×</button></div></div>
+          <form class="dial-form" id="dialForm">
+            <button class="call-button" type="submit"><span class="phone-icon">⌕</span><span>Call</span></button>
+          </form>
+        </div>
+      </section>
+      <footer class="footer-note"><span class="lock">⌑</span> Calls are peer-to-peer and encrypted end-to-end <span class="footer-dot"></span> <a href="#">How it works</a></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <audio id="remoteAudio" autoplay></audio>
+  <div class="call-modal" id="callModal" aria-hidden="true"><div class="call-card"><div class="call-pulse"><span class="avatar avatar-call" id="modalAvatar">MC</span><span class="pulse-ring"></span></div><div class="call-status" id="callStatus">Calling...</div><h2 id="modalName">Maya Chen</h2><p id="modalEmail">maya.chen@gmail.com</p><div class="call-actions"><button class="round-action mute" id="muteButton" aria-label="Mute">♩</button><button class="end-call" id="endCall" aria-label="End call">●</button><button class="round-action speaker" id="speakerButton" aria-label="Speaker">⌁</button></div><small class="modal-hint" id="modalHint">Connecting securely</small></div></div>
+  <div class="auth-modal" id="authModal" aria-hidden="true"><section class="auth-card"><button class="auth-close" id="authClose" aria-label="Close account panel">×</button><div class="panel-kicker">YOUR RELAY ACCOUNT</div><h2 id="authTitle">Welcome back</h2><p class="auth-subtitle" id="authSubtitle">Sign in to remember your Gmail contacts across calls.</p><div class="auth-tabs"><button class="auth-tab selected" data-auth-view="login">Log in</button><button class="auth-tab" data-auth-view="signup">Sign up</button><button class="auth-tab" data-auth-view="forgot">Forgot password</button></div><form id="authForm"><label for="authEmail">Email</label><input id="authEmail" type="email" placeholder="you@gmail.com" required /><label for="authPassword" id="passwordLabel">Password</label><input id="authPassword" type="password" placeholder="••••••••" required /><label class="remember-row" id="rememberRow"><input id="rememberMe" type="checkbox" checked /> Remember this account</label><button class="auth-submit" type="submit" id="authSubmit">Log in <span>↗</span></button></form><div class="saved-gmails"><div><span class="panel-kicker">REMEMBERED GMAILS</span><span class="saved-count" id="savedCount">0</span></div><div class="saved-list" id="savedList"><small>No saved Gmail contacts yet.</small></div></div></section></div>
+  <script src="app.js"></script>
+</body>
+</html>

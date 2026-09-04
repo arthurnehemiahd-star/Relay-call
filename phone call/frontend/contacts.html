@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>relay — contacts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="contacts-page-body">
+  <main class="contacts-page"><header class="contacts-header"><a class="brand" href="/"><span class="brand-mark">r</span><span>relay</span></a><a class="contacts-back" href="/">← Dashboard</a></header><section class="contacts-content"><div class="panel-kicker">YOUR PEOPLE</div><h1>Contacts</h1><p class="contacts-intro">Save Gmail addresses so they are ready to call.</p><form id="contactForm" class="contact-form"><label for="contactName">Name</label><input id="contactName" type="text" placeholder="Their name" required><label for="contactEmail">Gmail address</label><input id="contactEmail" type="email" placeholder="friend@gmail.com" required><button type="submit">Save contact <span>↗</span></button></form><div class="saved-contacts-heading"><span class="panel-kicker">SAVED CONTACTS</span><span id="contactCount">0</span></div><div id="contactsList" class="contacts-list"><p class="contacts-empty">No contacts saved yet.</p></div></section></main><div class="toast" id="toast" role="status"></div><script src="contacts.js"></script>
+</body>
+</html>

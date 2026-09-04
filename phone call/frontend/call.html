@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>relay — call</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="call-page-body">
+  <main class="call-page">
+    <header class="call-page-header"><a class="brand" href="/"><span class="brand-mark">r</span><span>relay</span></a><span class="call-page-secure">ENCRYPTED CALL</span></header>
+    <section class="call-screen"><a class="back-link" href="/">← Back to dialer</a><div class="call-page-avatar" id="callAvatar">NF</div><div class="call-page-status" id="callStatus">Calling...</div><h1 id="callName">New Friend</h1><p id="callEmail">new.friend@gmail.com</p><button class="answer-button" id="answerButton">◉ Answer call</button><div class="call-page-actions" id="callActions" hidden><button class="page-action" id="muteButton" aria-label="Mute">♩<small>mute</small></button><button class="page-action" id="speakerButton" aria-label="Audio">⌁<small>audio</small></button><button class="page-action" id="addCallButton" aria-label="Add call">＋<small>add call</small></button><button class="page-action" id="videoButton" aria-label="Video">▣<small>FaceTime</small></button><button class="page-action" id="contactsButton" aria-label="Contacts">◎<small>contacts</small></button></div><div class="add-participant" id="addParticipant" hidden><strong>Add someone to this call</strong><div class="add-participant-form"><input id="participantEmail" type="email" placeholder="friend@gmail.com"><button id="inviteParticipant" type="button">Invite</button></div><div class="participant-list" id="participantList"></div></div><button class="page-end" id="endCall" aria-label="End call">●</button><p class="call-page-hint" id="callHint">Connecting microphone...</p></section>
+    <video id="remoteVideo" autoplay playsinline hidden></video><video id="localVideo" autoplay muted playsinline hidden></video><audio id="remoteAudio" autoplay></audio>
+  </main>
+  <script src="call-page.js"></script>
+</body>
+</html>
